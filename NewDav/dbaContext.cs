@@ -27,6 +27,9 @@ namespace Ambebi
         public string Title { get; set; }
         [Column(TypeName = "nvarchar(2000)")]
         public string Content { get; set; }
+        [Column(TypeName = "DateTime" )]
+        public DateTime? CreatedDateTime { get; set; }
+
 
     }
 

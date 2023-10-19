@@ -23,6 +23,7 @@ namespace Ambebi
             Ambebi ambebi = new Ambebi();
             ambebi.Title = ambebi0.Title;
             ambebi.Content = ambebi0.Content;
+            ambebi.CreatedDateTime = DateTime.Now;
 
             _context.Ambebis.Add(ambebi);
 
@@ -78,14 +79,32 @@ namespace Ambebi
             return _context.Ambebis.ToList();
         }
 
-        public Ambebi UpdateAmbebi(int id, Ambebi ambebi)
+
+        public List<Ambebi> GetAmbebi(DateTime currentDay)
+        {
+            if (_context.Ambebis == null)
+            {
+                return null;
+            }
+            return _context.Ambebis.Where(a => a.CreatedDateTime > currentDay ||).ToList();
+        }
+
+
+
+
+        public Ambebi UpdateAmbebi(int id, DTOAmbebiUpdate ambebi)
         {
             if (id != ambebi.AmbebiId)
             {
                 return null;
             }
 
-            _context.Entry(ambebi).State = EntityState.Modified;
+            var ambebiDedani = _context.Ambebis.Find(id);
+            ambebiDedani.Title = ambebi.Title;
+            ambebiDedani.Content = ambebi.Content;
+            _context.Update(ambebiDedani);
+
+            //_context.Entry(ambebi).State = EntityState.Modified;
 
             try
             {
@@ -103,7 +122,7 @@ namespace Ambebi
                 }
             }
 
-            return ambebi;
+            return ambebiDedani;
         }
 
         private bool AmbebiExists(int id)

@@ -33,6 +33,22 @@ namespace Ambebi.Controllers
 
         }
 
+        /// <summary>
+        /// თარიღის მიხედვით
+        /// </summary>
+        /// <returns></returns>
+        // GET: api/Ambebis
+        [HttpGet]
+        [Route("filter/{day}")]
+        public async Task<ActionResult<IEnumerable<Ambebi>>> GetAmbebi(DateTime day)
+        {
+
+
+            return _iambebi.GetAmbebi(day);
+
+        }
+
+
 
         /// <summary>
         /// ერთი ამბის ნახვა
@@ -60,7 +76,7 @@ namespace Ambebi.Controllers
         // PUT: api/Ambebis/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAmbebi(int id, Ambebi ambebi)
+        public async Task<IActionResult> PutAmbebi(int id, DTOAmbebiUpdate ambebi)
         {
 
             return Ok(_iambebi.UpdateAmbebi(id, ambebi));
