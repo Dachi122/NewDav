@@ -28,7 +28,7 @@ namespace Ambebi
             {
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
                     $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-            });
+            }); 
 
             var app = builder.Build();
 
