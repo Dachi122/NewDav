@@ -1,6 +1,7 @@
 ﻿using Ambebi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NewDav;
 
 namespace Ambebi
 {
@@ -80,18 +81,18 @@ namespace Ambebi
         }
 
 
-        public List<Ambebi> GetAmbebi(DateTime currentDay)
+        public List<Ambebi> GetAmbebi(DTODateTimeInterval requ)
         {
+
             if (_context.Ambebis == null)
             {
                 return null;
             }
-            return _context.Ambebis.Where(a => a.CreatedDateTime > currentDay ||).ToList();
+            return _context.Ambebis.Where(a => a.CreatedDateTime.Value.Date >= requ.DateTimeFrom && a.CreatedDateTime.Value.Date <= requ.DateTimeTo).ToList();
         }
 
 
-
-
+        
         public Ambebi UpdateAmbebi(int id, DTOAmbebiUpdate ambebi)
         {
             if (id != ambebi.AmbebiId)
@@ -129,5 +130,6 @@ namespace Ambebi
         {
             return (_context.Ambebis?.Any(e => e.AmbebiId == id)).GetValueOrDefault();
         }
+
     }
 }

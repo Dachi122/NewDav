@@ -1,5 +1,6 @@
 using Ambebi;
 using Microsoft.EntityFrameworkCore;
+using NewDav;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -20,7 +21,18 @@ namespace Ambebi
             builder.Services.AddDbContext<dbaContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+            builder.Services.Configure<Settings2Options>(
+                builder.Configuration.GetSection("Settings2"));
+
+            // Interface DI
+
             builder.Services.AddScoped<IAmbebi, AmbebiSV>();
+            builder.Services.AddScoped<ICalc, Calc>();
+
+            // Interface DI
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             //builder.Services.AddSwaggerGen();

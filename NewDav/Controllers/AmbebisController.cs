@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NewDav;
 
 namespace Ambebi.Controllers
 {
@@ -6,64 +7,18 @@ namespace Ambebi.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class AmbebisController : ControllerBase
+    public class AmbebisShecvlaController : ControllerBase
     {
         //private readonly dbaContext _context;
         private readonly IAmbebi _iambebi;
 
-        public AmbebisController(IAmbebi iambebi)
+        public AmbebisShecvlaController(IAmbebi iambebi)
         {
             //_context = context;
             _iambebi = iambebi;
         }
 
-
-        /// <summary>
-        /// ამბების სია
-        /// </summary>
-        /// <returns></returns>
-
-        // GET: api/Ambebis
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ambebi>>> GetAmbebi()
-        {
-
-
-            return _iambebi.GetAmbebi();
-
-        }
-
-        /// <summary>
-        /// თარიღის მიხედვით
-        /// </summary>
-        /// <returns></returns>
-        // GET: api/Ambebis
-        [HttpGet]
-        [Route("filter/{day}")]
-        public async Task<ActionResult<IEnumerable<Ambebi>>> GetAmbebi(DateTime day)
-        {
-
-
-            return _iambebi.GetAmbebi(day);
-
-        }
-
-
-
-        /// <summary>
-        /// ერთი ამბის ნახვა
-        /// </summary>
-        /// <param name="id">ზრაპრის ნომერი</param>
-        /// <returns></returns>
-
-        // GET: api/Ambebis/5
-        [HttpGet("{id}")]
-
-        public async Task<ActionResult<Ambebi>> GetAmbebi(int id)
-        {
-
-            return _iambebi.GetAmbebi(id);
-        }
+            
 
 
         /// <summary>
@@ -114,6 +69,11 @@ namespace Ambebi.Controllers
 
             return Ok(_iambebi.DeleteAmbebi(id));
         }
+
+
+
+
+
 
 
     }
