@@ -1,6 +1,7 @@
 using Ambebi;
 using Microsoft.EntityFrameworkCore;
 using NewDav;
+using PageTools;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -28,6 +29,7 @@ namespace Ambebi
             // Interface DI
 
             builder.Services.AddScoped<IAmbebi, AmbebiSV>();
+            builder.Services.AddScoped<IExternal, ExternalSV>();
             builder.Services.AddScoped<ICalc, Calc>();
 
             // Interface DI

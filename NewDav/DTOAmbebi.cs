@@ -13,6 +13,21 @@ namespace Ambebi
 
     }
 
+
+
+    public class DTOSearch 
+    {
+
+        public string Search { get; set; }
+        
+
+    }
+
+
+
+
+
+
     public class DTOAmbebiUpdate
     {
 
@@ -22,6 +37,20 @@ namespace Ambebi
 
 
     }
+
+
+
+    public class DTOAmbebiDateOnly
+    {
+
         
+        public int AmbebiId { get; set; }        
+        public string Title { get; set; }        
+        public string Content { get; set; }        
+        public string CreatedDateTime { get; set; }
+
+
+    }
+
 
 }

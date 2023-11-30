@@ -58,6 +58,31 @@ namespace Ambebi.Controllers
 
 
         /// <summary>
+        /// დამატება 30მდე
+        /// </summary>
+        /// <param name="ambebi0"></param>
+        /// <returns></returns>
+        // POST: api/Ambebis
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [Route("Add<30")]
+        public async Task<ActionResult<Ambebi>> PostAmbebi30(DTOAmbebi ambebi0)
+        {
+
+            var ambebi = _iambebi.CreateAmbebi30(ambebi0);
+
+            if (ambebi == null)
+            {
+                return BadRequest(new { message = "მოხდა შეცდომა" });
+            }
+
+           return Ok(ambebi);
+        }
+
+
+
+
+        /// <summary>
         /// წაშლა
         /// </summary>
         /// <param name="id">ტესტ</param>
